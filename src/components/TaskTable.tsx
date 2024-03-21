@@ -15,14 +15,18 @@ interface Task {
 
 export const TaskTable = () => {
   const [data, setData] = useState<Task[] | null>(null);
+  const [loaded, setLoaded] = useState(false);
+
+  const fetchData = async () => {
+    console.log("fetching data");
+    const res = await fetch("/api/memos");
+    const body = await res.json();
+    setLoaded(true)
+    setData(body.data);
+  };
+
 
   useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch("/api/memos");
-      const body = await res.json();
-      setData(body.data);
-    };
-
     setTimeout(() => {
       fetchData(), 500;
     });
@@ -51,8 +55,8 @@ export const TaskTable = () => {
 
   return (
     <div className="w-full bg-white mx-auto shadow-lg rounded-lg overflow-hidden my-5">
-      {!data && <div className="text-center py-5">Loading...</div>}
-      {data && (
+      {(!data || !loaded) && <div className="text-center py-5">Loading...</div>}
+      {loaded && data && (
         <table className="w-full leading-normal border border-collapse">
           <thead>
             <tr className="w-full bg-slate-100 border-2 border-collapse border-gray-400">
