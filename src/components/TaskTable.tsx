@@ -21,10 +21,9 @@ export const TaskTable = () => {
     console.log("fetching data");
     const res = await fetch("/api/memos");
     const body = await res.json();
-    setLoaded(true)
+    setLoaded(true);
     setData(body.data);
   };
-
 
   useEffect(() => {
     setTimeout(() => {
@@ -61,13 +60,13 @@ export const TaskTable = () => {
           <thead>
             <tr className="w-full bg-slate-100 border-2 border-collapse border-gray-400">
               <th className="w-1/4 text-left ps-4  px-4 border border-gray-400">
-                Website
+                Memo Title
               </th>
               <th className="w-1/4 text-center ps-4  px-4border border-gray-400">
-                User Name
+                Content
               </th>
               <th className="w-1/3 text-center ps-4  px-4 border border-gray-400">
-                Password
+                Note
               </th>
               <th className="w-1/6 text-center ps-4  px-4 border border-gray-400">
                 Delete

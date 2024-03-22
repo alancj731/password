@@ -53,15 +53,15 @@ export const Task: React.FC<TaskProps> =({website, username, password}) => {
       <CardContent>
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="website">Website</Label>
+            <Label htmlFor="website">Memo Title</Label>
             <Input id="website" placeholder={memo.website} onChange={(e) => setMemo((prev)=>({...prev, website: e.target.value}))}/>
           </div>
           <div className="space-y-2">
-            <Label htmlFor="username">User Name</Label>
+            <Label htmlFor="username">Content</Label>
             <Input id="username" placeholder={memo.username} onChange={(e) => setMemo((prev)=>({...prev, username: e.target.value}))}/>
           </div>
           <div className="space-y-2">
-          <Label htmlFor="password">Password</Label>
+          <Label htmlFor="password">Note</Label>
             <Input id="password" placeholder={memo.password} onChange={(e) => setMemo((prev)=>({...prev, password: e.target.value}))}/>
           </div>
         </div>
